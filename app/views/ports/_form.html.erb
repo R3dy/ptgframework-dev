@@ -1,0 +1,23 @@
+<%= error_messages_for(@port) %>
+    <table summary="Port form fields">
+      <tr>
+        <th>TCP/UDP</th>
+        <td><%= form.text_field(:port_protocol) %></td>
+      </tr>
+      <tr>
+        <th>Port Number</th>
+        <td><%= form.text_field(:portnumber) %></td>
+      </tr>
+      <tr>
+        <th>Protocol</th>
+        <td><%= form.text_field(:service_protocol) %></td>
+      </tr>
+      <tr>
+        <th>Service</th>
+        <td><%= form.text_field(:service_banner) %></td>
+      </tr>
+      <tr>
+        <th>Version</th>
+        <td><%= form.text_field(:service_version) %></td>
+      </tr>
+    </table>

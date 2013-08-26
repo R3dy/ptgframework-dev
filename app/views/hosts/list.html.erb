@@ -1,0 +1,27 @@
+<% @page_title = "List Hosts" %>
+<% @content_header = "List Hosts" %>
+
+<div class="content-output">
+  <%= link_to("Add a new host", {:action => 'new'}, :class => 'action new') %>
+  <div><%= pluralize(@hosts.size, 'host') %> found</div>
+  <table class="listing" summary="host List">
+    <tr class="list-header">
+      <th>ipv4_address</th>
+      <th>Hostname</th>
+      <th>Operating System</th>
+      <th>Options</th>
+    </tr>
+    <% @hosts.each do |host| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= host.ipv4_address %></td>
+      <td class="center"><%= host.hostname %></td>
+      <td class="center"><%= host.operating_system %></td>
+      <td class="actions">
+        <%= link_to("Show", {:action => 'show', :id => host.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action => 'edit', :id => host.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id => host.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

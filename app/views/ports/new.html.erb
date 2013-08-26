@@ -1,0 +1,16 @@
+<% @page_title = "Create Port" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="port new">
+  <h2>Create Port</h2>
+
+  <%= form_for(:port, :url => {:action => 'create'}) do |form| %>
+
+    <%= render(:partial => "form", :locals => {:form => form}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Create Port") %>
+    </div>
+  <% end %>
+</div>

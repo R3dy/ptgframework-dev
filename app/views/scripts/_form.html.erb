@@ -1,0 +1,11 @@
+<%= error_messages_for(@script) %>
+    <table summary="Script form fields">
+      <tr>
+        <th>Script Name</th>
+        <td><%= form.text_field(:script_name) %></td>
+      </tr>
+      <tr>
+        <th>Script Output</th>
+        <td><%= form.text_field(:script_output) %></td>
+      </tr>
+    </table>

@@ -1,0 +1,10 @@
+<div class="content-output">
+ 
+<h1>File Upload</h1>
+<%= form_tag(:action => 'add_scan_data', :multipart => true) %>
+<label for="upload_file">Select File</label>
+<%= file_field :file, 'datafile' %>
+<%= submit_tag "Upload" %>
+<% form_tag %>
+
+</div>

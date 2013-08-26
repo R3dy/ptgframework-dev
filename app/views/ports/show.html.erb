@@ -1,0 +1,38 @@
+<% @page_title = "Show Port: #{@port.portnumber}" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="content-output">
+  <h2>Show port</h2>
+
+  <table summary="port-detail-view">
+    <tr>
+      <th>TCP/UDP</th>
+      <td><%= @port.port_protocol %></td>
+    </tr>
+    <tr>
+      <th>Portnumber</th>
+      <td><%= @port.portnumber %></td>
+    </tr>
+    <tr>
+      <th>Protocol</th>
+      <td><%= @port.service_protocol %></td>
+    </tr>
+    <tr>
+      <th>Service</th>
+      <td><%= @port.service_banner %></td>
+    </tr>
+    <tr>
+      <th>Version</th>
+      <td><%= @port.service_version %></td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td><%= @port.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td><%= @port.updated_at %></td>
+    </tr>
+  </table>
+</div>

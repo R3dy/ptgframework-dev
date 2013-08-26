@@ -1,0 +1,53 @@
+<% @page_title = "Show Host: #{@host.ipv4_address}" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="content-output">
+  <h2>Show host</h2>
+
+  <table class="host-detail-view">
+    <tr>
+      <td class="detail-header-row" colspan=3>Host Information</td>
+    </tr>
+    <tr class="odd">
+      <th class="cell-header">IP Address:</th>
+      <td class="cell" colspan=2><%= @host.ipv4_address %></td>
+    </tr>
+    <tr class="even">
+      <th class="cell-header">Hostname:</th>
+      <td colspan=2><%= @host.hostname %></td>
+    </tr>
+    <tr class="odd">
+      <th class="cell-header">Operating System:</th>
+      <td colspan=2><%= @host.operating_system %></td>
+    </tr>
+    <tr class="even">
+      <th class="cell-header">Status:</th>
+      <td colspan=2><%= @host.status %></td>
+    </tr>
+    <tr class="odd">
+      <th class="cell-header">Created:</th>
+      <td colspan=2><%= @host.created_at %></td>
+    </tr>
+    <tr class="normal-row">
+      <th class="cell-header">Updated:</th>
+      <td colspan=2><%= @host.updated_at %></td>
+  </tr>
+    <tr>
+      <td class="detail-header-row" colspan=3>Open Ports</td>
+    </tr>
+    <tr class="odd">
+      <th class="cell-headerpn">Port Number:</th>
+      <th class="cell-headerp">Protocol:</th>
+      <th class="cell-headers">Service Banner:</th>
+    </tr>
+    <% @ports.each do |port| %>
+      <tr class="<%= cycle("even", "odd") %>">
+        <td><%= port.portnumber %></td>
+        <td><%= port.service_protocol %></td>
+        <td><%= port.service_banner %> <%= port.service_version %></td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>

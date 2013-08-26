@@ -1,0 +1,19 @@
+<% @page_title = "Delete Script: #{@script.scriptnumber}" %>
+
+<%= link_to("Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="script-delete">
+  <h2>Delete Script</h2>
+
+  <%= form_for(:script, :url => {:action => 'destroy', :id => @script.id}) do |f| %>
+
+    <p>Are you sure you want to permanently delete this page?</p>
+
+    <p class="reference-name"><%= @script.script_name %></p>
+
+    <div class="form-buttons">
+      <%= submit_tag("Delete Script") %>
+    </div>
+
+  <% end %>
+</div>

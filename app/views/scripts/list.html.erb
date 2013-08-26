@@ -1,0 +1,27 @@
+<% @page_title = "List Scripts" %>
+<% @content_header = "List Scripts" %>
+
+<div class="content-output">
+  <%= link_to("Add a new script", {:action => 'new'}, :class => 'action new') %>
+  <div><%= pluralize(@scripts.size, 'script') %> found</div>
+  <table class="listing" summary="script List">
+    <tr class="list-header">
+      <th>Port ID</th>
+      <th>Script Name</th>
+      <th>Script Output</th>
+      <th>Options</th>
+    </tr>
+    <% @scripts.each do |script| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= script.port_id %></td>
+      <td class="center"><%= script.script_name %></td>
+      <td class="center"><%= script.script_output %></td>
+      <td class="actions">
+        <%= link_to("Show", {:action => 'show', :id => script.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action => 'edit', :id => script.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id => script.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

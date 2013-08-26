@@ -1,0 +1,22 @@
+<h1>Listing uploads</h1>
+
+<table>
+  <tr>
+    <th>Filename</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @xmls.each do |xml| %>
+  <tr>
+    <td><%= xml.file %></td>
+    <td><%= link_to 'Show', xml %></td>
+    <td><%= link_to 'Edit', edit_xml_path(xml) %></td>
+    <td><%= link_to 'Destroy', xml, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

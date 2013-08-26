@@ -1,0 +1,17 @@
+<% @page_title = "Edit Port: #{@port.portnumber}" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="port-new">
+  <h2>Update Port</h2>
+
+  <%= form_for(:port, :url => {:action => 'update', :id => @port.id}) do |form| %>
+
+    <%= render(:partial => "form", :locals => {:form => form}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Update Port") %>
+    </div>
+  <% end %>
+</div>
+

@@ -1,0 +1,19 @@
+<%= error_messages_for(@host) %>
+    <table summary="Host form fields">
+      <tr>
+        <th>IPv4 Address</th>
+        <td><%= form.text_field(:ipv4_address) %></td>
+      </tr>
+      <tr>
+        <th>IPv6 Address</th>
+        <td><%= form.text_field(:ipv6_address) %></td>
+      </tr>
+      <tr>
+        <th>Hostname</th>
+        <td><%= form.text_field(:hostname) %></td>
+      </tr>
+      <tr>
+        <th>Operating System</th>
+        <td><%= form.text_field(:operating_system) %></td>
+      </tr>
+    </table>

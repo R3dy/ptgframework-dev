@@ -1,0 +1,16 @@
+<div class="content-output">
+    <table class="listing" summary="host List">
+        <tr class="list-header">
+            <th>IP Address</th>
+            <th>Hostname</th>
+            <th>Operatin System</th>
+        </tr>
+        <% @hosts.each do |host| %>
+        <tr class="<%= cycle('even', 'odd') -%>">
+            <td><%= host.ipv4_address %></td>
+            <td><%= host.hostname %></td>
+            <td><%= host.operating_system %></td>
+        </tr>
+         <% end %> 
+    </table>
+</div>

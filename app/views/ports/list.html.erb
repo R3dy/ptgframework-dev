@@ -1,0 +1,37 @@
+
+<% @page_title = "List Ports" %>
+<% @content_header = "List Ports" %>
+<% @protocols = Array.new %>
+<% Port.select("DISTINCT(SERVICE_PROTOCOL)").each do |p| %>
+<% @protocols << p.service_protocol unless p.service_protocol.nil?%>
+<% end %>
+
+<div class="content-output">
+  <%= link_to("Add a new port", {:action => 'new'}, :class => 'action new') %>
+  <div><%= pluralize(@ports.size, 'port') %> found</div>
+  <table class="listing" summary="port List">
+    <tr class="list-header">
+      <th>TCP/UDP</th>
+      <th>Portnumber</th>
+      <th>Protocol</th>
+      <th>Service</th>
+      <th>Options</th>
+    </tr>
+    <% @ports.each do |port| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= port.port_protocol %></td>
+      <td class="center"><%= port.portnumber %></td>
+      <td class="center"><%= port.service_protocol %></td>
+      <td class="center"><%= port.service_banner %> <%= port.service_version %> <%= port.service_extra_info %></td>
+      <td class="actions">
+        <%= link_to("Show", {:action => 'show', :id => port.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action => 'edit', :id => port.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id => port.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <%= @protocols.each do |p| %>
+    <%= puts "Hello #{p}" if !p.nil? %>
+  <% end %> 
+</div>

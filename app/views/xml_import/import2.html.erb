@@ -1,0 +1,15 @@
+<%= form_for @xml_import, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.file_field :xml %>
+  </p>
+  <p>
+    <%= f.label :remote_xml_url, "or image URL" %>
+    <%= f.text_field :remote_xml_url %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

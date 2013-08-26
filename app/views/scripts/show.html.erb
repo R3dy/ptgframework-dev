@@ -1,0 +1,22 @@
+<% @page_title = "Show Script: #{@script.script_name}" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="content-output">
+  <h2>Show script</h2>
+
+  <table summary="script-detail-view">
+    <tr>
+      <th>Port ID</th>
+      <td><%= @script.port_id %></td>
+    </tr>
+    <tr>
+      <th>Script Name</th>
+      <td><%= @script.script_name %></td>
+    </tr>
+    <tr>
+      <th>Script Output</th>
+      <td><%= @script.script_output %></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,16 @@
+<% @page_title = "Create Host" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="host new">
+  <h2>Create Host</h2>
+
+  <%= form_for(:host, :url => {:action => 'create'}) do |form| %>
+
+    <%= render(:partial => "form", :locals => {:form => form}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Create Host") %>
+    </div>
+  <% end %>
+</div>

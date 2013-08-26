@@ -1,0 +1,16 @@
+<% @page_title = "Create Script" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="script new">
+  <h2>Create Script</h2>
+
+  <%= form_for(:script, :url => {:action => 'create'}) do |form| %>
+
+    <%= render(:partial => "form", :locals => {:form => form}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Create Script") %>
+    </div>
+  <% end %>
+</div>

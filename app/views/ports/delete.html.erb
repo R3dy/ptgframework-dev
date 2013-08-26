@@ -1,0 +1,19 @@
+<% @page_title = "Delete Port: #{@port.portnumber}" %>
+
+<%= link_to("Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="port-delete">
+  <h2>Delete Port</h2>
+
+  <%= form_for(:port, :url => {:action => 'destroy', :id => @port.id}) do |f| %>
+
+    <p>Are you sure you want to permanently delete this page?</p>
+
+    <p class="reference-name"><%= @port.portnumber %></p>
+
+    <div class="form-buttons">
+      <%= submit_tag("Delete Port") %>
+    </div>
+
+  <% end %>
+</div>
