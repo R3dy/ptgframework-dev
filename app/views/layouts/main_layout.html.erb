@@ -1,45 +1,42 @@
 <html>
-	<head>
-	  <title>Pentestgeek - Framework</title>
-      <%= stylesheet_link_tag('style', :media => 'all') %>
-      <%= javascript_include_tag "accordion" %>
-      <%= javascript_include_tag "application" %>
-      <%= javascript_include_tag :defaults %>
-	</head>
-	
-	<body bgcolor="#EDEDED">
-	
-	<div class="header">
-	  <h1 class="header-title">Pentestgeek Framework</h1>
-	  <h4 class="header-sub-title">A framework for manageing penetration testing progress</h4>
-	    <div class="top-nav">
-		  <table class="nav-table">
-		    <tr>
-			  <td class="nav-button"><a href="#" class="top-nav-link">Home</a></td>
-			  <td class="nav-button"><%= link_to("Hosts", :controller => :hosts, :action => 'index') %></td>
-			  <td class="nav-button"><%= link_to("Ports", :controller => :ports, :action => 'index') %></td>
-			  <td class="nav-button"><%= link_to("NSE Output", :controller => :scripts, :action => 'index') %></td>
-			  <td class="nav-button"><a href="#" class="top-nav-link">Notes</a></td>
-			</tr>
-		  </table>
-		</div>
-	</div>
+<head>
+<title>Pentestgeek - Framework</title>
+<%= stylesheet_link_tag('style', :media => 'all') %>
+<%= javascript_include_tag "accordion" %>
+<%= javascript_include_tag "application" %>
+<%= javascript_include_tag :defaults %>
+</head>
 
-	<div class="content">
-      <div class="flash-notice"><%= flash[:notice] %></div><br />
-	  <table class="main-content" cellspacing="0" cellpadding="0">
-		<tr class="main-content-table-header"><th>&nbsp;&nbsp;<%= @page_title %></th></tr>
-		<tr class="main-content-table-body">
-          <td><%= yield %></td>
-        </tr>
-	  </table>
-      <table class="secondary-content">
-	  </table>
-	</div>
+<body bgcolor="#999999">
 
-	<div class="footer">
-		&copy; 2013 www.pentestgeek.com - Royce Davis
-	</div>
+<div class="header">
+  <h1 class="header-title">Pentestgeek Framework</h1>
+  <h4 class="header-sub-title">A framework for manageing penetration testing progress</h4>
+  <div class="top-nav">
+    <table class="nav-table">
+      <tr>
+        <td class="nav-button"><a href="#" class="top-nav-link">Home</a></td>
+        <td class="nav-button"><%= link_to("Hosts", {:controller => :hosts, :action => 'index'}, :class => "top-nav-link") %></td>
+        <td class="nav-button"><%= link_to("Ports", {:controller => :ports, :action => 'index'}, :class => "top-nav-link") %></td>
+        <td class="nav-button"><%= link_to("NSE Output", {:controller => :scripts, :action => 'index'}, :class => "top-nav-link") %></td>
+        <td class="nav-button"><a href="#" class="top-nav-link">Notes</a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="flash-notice"><%= flash[:notice] %></div>
+<div class="content">
+  <table class="main-content" cellspacing="0" cellpadding="0">
+    <tr class="main-content-table-header"><td class="main-content-table-header">&nbsp;&nbsp;<%= @page_title %></td></tr>
+    <tr class="main-content-table-body">
+      <td><%= yield %></td>
+    </tr>
+  </table>
+  <table class="secondary-content">
+  </table>
+</div>
 
-	</body>
+<div class="footer">&copy; 2013 www.pentestgeek.com - Royce Davis</div>
+
+</body>
 </html>

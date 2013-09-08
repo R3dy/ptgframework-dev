@@ -1,4 +1,5 @@
 require 'fileutils'
+
 class XmlsController < ApplicationController 
 
     def index
@@ -52,13 +53,14 @@ class XmlsController < ApplicationController
       # For each open port, create a new record in the Port database
       [:tcp, :udp].each do |proto|
         host.getports(proto, "open") do |port|
-          process_port(newhost.id, port)
+          newhost.has_open_ports = true unless newhost.has_open_ports == true
+          process_port(newhost, port)
         end
       end
     end
 
-    def process_port(hostid, port)
-      recordhash = { :host_id => hostid,
+    def process_port(host, port)
+      recordhash = { :host_id => host.id,
                      :port_protocol => port.proto,
                      :state => port.state,
                      :reason => port.reason,
@@ -71,8 +73,10 @@ class XmlsController < ApplicationController
       newport = Port.new(recordhash)
       newport.save
       unless port.scripts.empty?
+        host.has_nse = true
+        host.save
         port.scripts.each { |script|
-          process_script(hostid, newport.id, script)
+          process_script(host.id, newport.id, script)
         }
       end
     end

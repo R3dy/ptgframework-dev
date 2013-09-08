@@ -1,37 +1,38 @@
 <% @page_title = "List Hosts" %>
 
 <div class="content-output">
-
-<div class="accordion">
-  <% @operatingsystems.each do |os| %>
-    <dt class="def-term"><a href="#" class="def-term-link">&nbsp;&nbsp;<%= os %> - <%= num_systems_by_osname(os) %></a></dt>
-        <dd class="def">
-        <table class="listing" summary="port List">
-          <tr class="list-header">
-            <th>IP Address</th>
-            <th>Hostname</th>
-            <th>Operating System</th>
-            <th>Options</th>
-          </tr>
-          <% @hosts.each do |host| %>
-            <% if host.operating_system == os %>
+  <div class="accordion">
+    <table class="accordion-table">
+      <% @operatingsystems.each do |os| %>
+        <tr><td>
+            <dt class="def-term"><a href="#" class="def-term-link">&nbsp;&nbsp;<%= os %> - <%= num_systems_by_osname(os) %></a></dt>
+          <dd class="def">
+          <table class="listing" summary="port List">
+            <tr class="list-header">
+              <th class="cell-header">IP Address</th>
+              <th class="cell-header">Hostname</th>
+              <th class="cell-header">Operating System</th>
+              <th class="cell-header">Options</th>
+            </tr>
+            <% @hosts.each do |host| %>
+              <% if host.operating_system == os %>
               <tr class="<%= cycle('even', 'odd') %>">
               <!-- <tr class="odd"> -->
-                <td><%= host.ipv4_address %></td>
-                <td class="center"><%= host.hostname %></td>
-                <td class="center"><%= host.operating_system %></td>
-                <td class="actions">
-                  <%= link_to("Show", {:action => 'show', :id => host.id}, :class => 'action show') %>
-                  <%= link_to("Edit", {:action => 'edit', :id => host.id}, :class => 'action edit') %>
-                  <%= link_to("Delete", {:action => 'delete', :id => host.id}, :class => 'action delete') %>
-                </td>
-              </tr>
-            <% end %>
+              <td class="cell-content"><%= link_to(host.ipv4_address, {:controller => 'hosts', :action => 'show', :id => host.id}, :class => 'cell-content-link') %></td>
+              <td class="cell-content"><%= host.hostname %></td>
+              <td class="cell-content"><%= host.operating_system %></td>
+              <td class="cell-content">
+                <%= link_to("Show", {:action => 'show', :id => host.id}, :class => 'action show') %>
+                <%= link_to("Edit", {:action => 'edit', :id => host.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => host.id}, :class => 'action delete') %>
+              </td>
+            </tr>
           <% end %>
-        </table>
-      <dt>
-  <% end %>
-
-</div>
-
+          <% end %>
+          </table>
+          <dt>
+      </td></tr>
+    <% end %>
+    </table>
+  </div>
 </div>

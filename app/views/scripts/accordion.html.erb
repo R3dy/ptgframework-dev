@@ -1,38 +1,37 @@
-
 <% @page_title = "List NSE Output" %>
-
 <div class="content-output">
-
-<div class="accordion">
-  <% @nsescripts.each do |scriptname| %>
-    <dt class="def-term"><a href="#" class="def-term-link"><%= scriptname %> - <%= num_systems_by_scriptname(scriptname) %></a></dt>
-        <dd class="def">
-        <table class="listing" summary="port List">
-          <tr class="list-header">
-            <th>IP Address</th>
-            <th>Port</t>
-            <th>Script Output</th>
-            <th>Options</th>
-          </tr>
-          <% @scripts.each do |script| %>
-            <% if script.script_name == scriptname %>
-              <tr class="<%= cycle('even', 'odd') %>">
-              <!-- <tr class="odd"> -->
-                <td><%= script.host.ipv4_address %></td>
-                <td><%= script.port.portnumber %></td>
-                <td class="center"><%= script.script_output %></td>
-                <td class="actions">
+  <div class="accordion">
+    <table class="accordion-table">
+      <% @nsescripts.each do |scriptname| %>
+        <tr><td>
+          <dt class="def-term"><a href="#" class="def-term-link"><%= scriptname %> - <%= num_systems_by_scriptname(scriptname) %></a></dt>
+          <dd class="def">
+          <table class="listing" summary="port List">
+            <tr class="list-header">
+              <th class="cell-header">IP Address</th>
+              <th class="cell-header">Port</t>
+                <th class="cell-header">Script Output</th>
+                <th class="cell-header">Options</th>
+              </tr>
+              <% @scripts.each do |script| %>
+                <% if script.script_name == scriptname %>
+                <tr class="<%= cycle('even', 'odd') %>">
+                <!-- <tr class="odd"> -->
+                <td class="cell-content"><%= link_to(script.host.ipv4_address, {:controller => 'hosts', :action => 'show', :id => script.host.id}, :class => 'cell-content-link') %></td>
+                <td class="cell-content"><%= script.port.portnumber %></td>
+                <td class="cell-content"><%= script.script_output %></td>
+                <td class="cellpcontent">
                   <%= link_to("Show", {:action => 'show', :id => script.id}, :class => 'action show') %>
                   <%= link_to("Edit", {:action => 'edit', :id => script.id}, :class => 'action edit') %>
                   <%= link_to("Delete", {:action => 'delete', :id => script.id}, :class => 'action delete') %>
                 </td>
               </tr>
             <% end %>
-          <% end %>
-        </table>
-      <dt>
-  <% end %>
-
-</div>
-
-</div>
+            <% end %>
+            </table>
+            <dt>
+        </td></tr>
+      <% end %>
+      </table>
+    </div>
+  </div>

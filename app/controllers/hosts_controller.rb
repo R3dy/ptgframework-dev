@@ -20,7 +20,10 @@ class HostsController < ApplicationController
 
   def show
     @host = Host.find(params[:id])
-    @ports = Port.where(:host_id => @host.id)
+    @ports = Port.where(:host_id => @host.id).order("service_protocol DESC")
+    if @host.has_nse == true
+      @scripts = Script.where(:host_id => @host.id)
+    end
   end
 
   def new

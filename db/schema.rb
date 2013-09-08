@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130815010042) do
+ActiveRecord::Schema.define(:version => 20130903003423) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",      :limit => 25
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(:version => 20130815010042) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "xml"
+    t.boolean  "has_nse"
+    t.boolean  "has_open_ports"
   end
 
   create_table "ports", :force => true do |t|
